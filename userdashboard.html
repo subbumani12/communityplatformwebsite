@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; }
+    header { background: #007bff; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+    header .profile { font-weight: bold; }
+    nav { margin: 15px; }
+    nav a { margin-right: 15px; text-decoration: none; color: #007bff; font-weight: bold; }
+    .container { padding: 20px; }
+    .card { background: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .card h3 { margin-top: 0; }
+    ul { padding-left: 20px; }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover{
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🎓 Community Platform</div>
+    <div class="profile">Welcome, <span id="username">[User Name]</span></div>
+    <a href="login.html" style="color:white;">Logout</a>
+  </header>
+
+  <nav>
+    <a href="#">Dashboard</a>
+    <a href="profile.html">Profile</a>
+    <a href="#">Session History</a>
+    <a href="#">Merch Store</a>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h3>Join a Session</h3>
+      <form id="joinSessionForm">
+        <input type="text" id="sessionCode" placeholder="Enter Session Code" required>
+        <button type="submit">Join Session</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Credit Balance</h3>
+      <p>Your current credits: <strong id="credits">50</strong></p>
+    </div>
+
+    <div class="card">
+      <h3>Upcoming Sessions</h3>
+      <ul>
+        <li>Session A — 10 Sept 2025 — 5:00 PM</li>
+        <li>Session B — 12 Sept 2025 — 7:00 PM</li>
+        <li>Session C — 15 Sept 2025 — 6:00 PM</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Quick Links</h3>
+      <p>✅ Join new sessions<br>✅ View session history<br>✅ Purchase credits<br>✅ Access merch store</p>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const username = localStorage.getItem('username');
+        if (username) {
+            document.getElementById('username').textContent = username;
+        } else {
+            document.getElementById('username').textContent = 'User';
+        }
+    });
+
+    document.getElementById("joinSessionForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const sessionCode = document.getElementById("sessionCode").value;
+        if (sessionCode) {
+            // Redirect to the session page, passing the code as a URL parameter
+            window.location.href = `videosession.html?code=${sessionCode}`;
+        }
+    });
+  </script>
+</body>
+</html>
+

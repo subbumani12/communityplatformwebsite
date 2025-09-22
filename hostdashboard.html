@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Host Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; }
+    header { background: #28a745; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+    header .profile { font-weight: bold; }
+    nav { margin: 15px; }
+    nav a { margin-right: 15px; text-decoration: none; color: #28a745; font-weight: bold;}
+    .container { padding: 20px; }
+    .card { background: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .card h3 { margin-top: 0; }
+    ul { padding-left: 20px; }
+    button { padding: 10px 15px; border: none; background: #28a745; color: white; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #1e7e34; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🎓 Community Platform</div>
+    <div class="profile">Welcome, <span id="hostName">[Host Name]</span></div>
+    <a href="login.html" style="color:white;">Logout</a>
+  </header>
+
+  <nav>
+    <a href="#">Dashboard</a>
+    <a href="profile.html">Profile</a>
+    <a href="#">Session History</a>
+    <a href="#">Merch Store</a>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h3>Credit Balance</h3>
+      <p>Your earnings balance: <strong id="credits">₹1200</strong></p>
+    </div>
+
+    <div class="card">
+      <h3>Upcoming Sessions</h3>
+      <ul>
+        <li>Session X — 09 Sept 2025 — 6:00 PM</li>
+        <li>Session Y — 11 Sept 2025 — 8:00 PM</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Create New Session</h3>
+      <button onclick="window.location.href='createsession.html'">+ New Session</button>
+    </div>
+
+    <div class="card">
+      <h3>Quick Links</h3>
+      <p>✅ Manage sessions<br>✅ View session history<br>✅ Withdraw earnings<br>✅ Manage merch items</p>
+    </div>
+  </div>
+  <script>
+    // This script runs when the page is loaded
+    window.addEventListener('DOMContentLoaded', (event) => {
+        // Retrieve the username from local storage
+        const username = localStorage.getItem('username');
+        if (username) {
+            // If a username is found, display it in the welcome message
+            document.getElementById('hostName').textContent = username;
+        } else {
+            // Provide a fallback name if none is found
+            document.getElementById('hostName').textContent = 'Host';
+        }
+    });
+  </script>
+</body>
+</html>
+

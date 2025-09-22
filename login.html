@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    .role-selection {
+      margin: 10px 0;
+    }
+    .role-selection label {
+      font-weight: normal;
+      margin-right: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label for="username">Username or Email</label>
+      <input type="text" id="username" name="username" placeholder="Enter username or email" required>
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter password" required>
+      
+      <div class="role-selection">
+        <label>
+          <input type="radio" name="role" value="user" checked> User
+        </label>
+        <label>
+          <input type="radio" name="role" value="host"> Host
+        </label>
+      </div>
+      
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // stop form from submitting normally
+      const role = document.querySelector("input[name='role']:checked").value;
+      const username = document.getElementById("username").value;
+
+      // Store username in the browser's local storage to access it on other pages
+      localStorage.setItem('username', username);
+
+      if (role === "user") {
+        window.location.href = "userdashboard.html";
+      } else {
+        window.location.href = "hostdashboard.html";
+      }
+    });
+  </script>
+</body>
+</html>
+
