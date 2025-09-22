@@ -37,30 +37,30 @@
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const username = localStorage.getItem('username');
-      // In a real app, the user's role would be stored on login.
-      // Here, we'll make a simple guess for the back button link.
-      const isHost = (username && (username.toLowerCase().includes('host') || username.toLowerCase().includes('admin')));
+      const fromDashboard = sessionStorage.getItem("fromDashboard");
 
       if (username) {
         document.getElementById('username').textContent = username;
-        // Using placeholder data for other fields
-        document.getElementById('email').textContent = username.toLowerCase().replace(/\s/g, '.') + '@example.com';
-        document.getElementById('role').textContent = isHost ? 'Host' : 'User';
+        document.getElementById('email').textContent =
+          username.toLowerCase().replace(/\s/g, '.') + '@example.com';
+        document.getElementById('role').textContent =
+          (username.toLowerCase().includes('host') || username.toLowerCase().includes('admin'))
+          ? 'Host' : 'User';
         document.getElementById('joinDate').textContent = 'September 8, 2025';
       } else {
-        // If no user is logged in, redirect to the login page
+        // If no user is logged in, redirect to login page
         window.location.href = 'login.html';
       }
 
-      // Set the correct "Back to Dashboard" link based on the guessed role
+      // Always return to the dashboard we came from
       const backLink = document.getElementById('backLink');
-      if (isHost) {
-        backLink.href = 'hostdashboard.html';
+      if (fromDashboard) {
+        backLink.href = fromDashboard;
       } else {
+        // fallback if nothing stored
         backLink.href = 'userdashboard.html';
       }
     });
   </script>
 </body>
 </html>
-

@@ -21,39 +21,32 @@
 <body>
   <header>
     <div class="logo">🎓 Community Platform</div>
-    <div class="profile">Welcome, <span id="hostName">[Host Name]</span></div>
+    <div class="profile">Welcome, <span id="hostName">[Host Name]</span> (Host)</div>
     <a href="login.html" style="color:white;">Logout</a>
   </header>
 
   <nav>
-    <a href="#">Dashboard</a>
-    <a href="profile.html">Profile</a>
+    <a href="hostdashboard.html">Dashboard</a>
+    <a href="profile.html" onclick="sessionStorage.setItem('fromDashboard', 'hostdashboard.html')">Profile</a>
     <a href="#">Session History</a>
     <a href="#">Merch Store</a>
   </nav>
 
   <div class="container">
     <div class="card">
-      <h3>Credit Balance</h3>
-      <p>Your earnings balance: <strong id="credits">₹1200</strong></p>
+      <h3>Credit Balance: <strong id="credits">50</strong></h3>
     </div>
 
     <div class="card">
       <h3>Upcoming Sessions</h3>
       <ul>
-        <li>Session X — 09 Sept 2025 — 6:00 PM</li>
-        <li>Session Y — 11 Sept 2025 — 8:00 PM</li>
+        <li>Placeholder 1</li>
+        <li>Placeholder 2</li>
       </ul>
     </div>
 
     <div class="card">
-      <h3>Create New Session</h3>
-      <button onclick="window.location.href='createsession.html'">+ New Session</button>
-    </div>
-
-    <div class="card">
-      <h3>Quick Links</h3>
-      <p>✅ Manage sessions<br>✅ View session history<br>✅ Withdraw earnings<br>✅ Manage merch items</p>
+      <h3>Create New Session : <button onclick="window.location.href='createsession.html'">New Session</button></h3>
     </div>
   </div>
   <script>

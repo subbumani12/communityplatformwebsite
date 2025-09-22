@@ -39,13 +39,13 @@
 <body>
   <header>
     <div class="logo">🎓 Community Platform</div>
-    <div class="profile">Welcome, <span id="username">[User Name]</span></div>
+    <div class="profile">Welcome, <span id="username">[User Name]</span>(User)</div>
     <a href="login.html" style="color:white;">Logout</a>
   </header>
 
   <nav>
     <a href="#">Dashboard</a>
-    <a href="profile.html">Profile</a>
+    <a href="profile.html" onclick="sessionStorage.setItem('fromDashboard', 'userdashboard.html')">Profile</a>
     <a href="#">Session History</a>
     <a href="#">Merch Store</a>
   </nav>
@@ -60,24 +60,17 @@
     </div>
 
     <div class="card">
-      <h3>Credit Balance</h3>
-      <p>Your current credits: <strong id="credits">50</strong></p>
+      <h3>Credit Balance: <strong id="credits">50</strong></h3>
     </div>
 
     <div class="card">
       <h3>Upcoming Sessions</h3>
       <ul>
-        <li>Session A — 10 Sept 2025 — 5:00 PM</li>
-        <li>Session B — 12 Sept 2025 — 7:00 PM</li>
-        <li>Session C — 15 Sept 2025 — 6:00 PM</li>
+        <li>Placeholder 1</li>
+        <li>Placeholder 2</li>
+        <li>Placeholder 3</li>
       </ul>
     </div>
-
-    <div class="card">
-      <h3>Quick Links</h3>
-      <p>✅ Join new sessions<br>✅ View session history<br>✅ Purchase credits<br>✅ Access merch store</p>
-    </div>
-  </div>
 
   <script>
     window.addEventListener('DOMContentLoaded', (event) => {
@@ -89,14 +82,6 @@
         }
     });
 
-    document.getElementById("joinSessionForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        const sessionCode = document.getElementById("sessionCode").value;
-        if (sessionCode) {
-            // Redirect to the session page, passing the code as a URL parameter
-            window.location.href = `videosession.html?code=${sessionCode}`;
-        }
-    });
   </script>
 </body>
 </html>
